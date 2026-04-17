@@ -1,0 +1,45 @@
+# ============================================================
+# Flask Application — Deployment and Service
+# INET 4031 Lab 13
+# ============================================================
+# Fill in each blank marked with # FILL IN
+# Refer to the wiki (Part 4b) for the expected value hints
+# ============================================================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: ticket-app
+spec:
+  replicas: ___             # FILL IN: 1
+  selector:
+    matchLabels:
+      app: ___              # FILL IN: app
+  template:
+    metadata:
+      labels:
+        app: ___            # FILL IN: app  (must match matchLabels above)
+    spec:
+      containers:
+        - name: app
+          image: ___        # FILL IN: YOUR_DOCKERHUB_USERNAME/flask-app:latest
+          ports:
+            - containerPort: ___ # FILL IN: 5000
+          envFrom:
+            - secretRef:
+                name: ___   # FILL IN: db-credentials
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  namespace: ticket-app
+spec:
+  selector:
+    app: ___                # FILL IN: app
+  ports:
+    - port: ___             # FILL IN: 5000
+      targetPort: ___       # FILL IN: 5000

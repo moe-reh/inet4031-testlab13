@@ -1,0 +1,66 @@
+# ============================================================
+# MariaDB — PersistentVolumeClaim, Deployment, and Service
+# INET 4031 Lab 13
+# ============================================================
+# Fill in each blank marked with # FILL IN
+# Refer to the wiki (Part 4a) for the expected value hints
+# ============================================================
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-pvc
+  namespace: ticket-app
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: ___          # FILL IN: 1Gi
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  namespace: ticket-app
+spec:
+  replicas: ___             # FILL IN: 1
+  selector:
+    matchLabels:
+      app: ___              # FILL IN: db
+  template:
+    metadata:
+      labels:
+        app: ___            # FILL IN: db  (must match matchLabels above)
+    spec:
+      containers:
+        - name: db
+          image: mariadb:11
+          ports:
+            - containerPort: ___ # FILL IN: 3306
+          envFrom:
+            - secretRef:
+                name: ___   # FILL IN: db-credentials
+          volumeMounts:
+            - name: db-storage
+              mountPath: ___ # FILL IN: /var/lib/mysql
+      volumes:
+        - name: db-storage
+          persistentVolumeClaim:
+            claimName: ___  # FILL IN: db-pvc
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  namespace: ticket-app
+spec:
+  selector:
+    app: ___                # FILL IN: db
+  ports:
+    - port: ___             # FILL IN: 3306
+      targetPort: ___       # FILL IN: 3306
