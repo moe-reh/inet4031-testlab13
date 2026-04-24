@@ -26,7 +26,7 @@ Before running this lab, ensure your Virtual Machine (VM) or local environment h
 4. Sudo Privileges: Most Docker commands require administrative permissions on Linux.
 
 # Getting Started
-1. Clone the Repository: git clone https://github.com/moe-reh/inet4031-testlab12.git
+1. Clone the Repository: git clone https://github.com/moe-reh/inet4031-testlab12.git or https://github.com/moe-reh/inet4031-testlab13.git
 2. Create your Environment File: cp .env.example .env
 3. Build and Start the Containers: sudo docker-compose up --build -d
 4. Verify the Containers are Running: sudo docker ps
