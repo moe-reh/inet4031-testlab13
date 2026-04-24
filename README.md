@@ -54,7 +54,7 @@ This lab moved the application to run on Kubernetes instead of Docker Compose. T
 To deploy the application in Kubernetes run the following command: kubectl apply -f k8s/
 The command above will create all the neccessary resources defined in the "k8s" folder.
 
-Access the dashboard using: http://<VM-IP>:30080
+Access the dashboard using: http://"your server IP":30080
 
 # Feedback (Optional)
 I really enjoyed this lab, and if I'm being honest I learned the most conceptually when completing the research questions, then the technical parts made that knowledge practical. I believe asing a couple of questions for us to research to then letting us complete technical work related to the question is a great combo for fortifying the learnings of the lab. I liked learning about pod, services, and deployements, their functionalities/limits, and being guided through how they actually work together to create an enviroment for an application. 
