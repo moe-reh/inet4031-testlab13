@@ -47,9 +47,9 @@ Run the Check Script: We have included a verification script to automate the tes
 
 # lab13 - Kubernetes
 This lab moved the application to run on Kubernetes instead of Docker Compose. The app is now maaged using kubernetes resources:
-1. Deployments
-2. Services
-3. Pods
+1. Pods: Runs one or more containers, represents an instance of the application.
+2. Deployments: Manages the Pods, handles updates and replacements of Pods in the event of crashes or deletions in order to keep the application online.
+3. Services: Connects users & apps to the pods. Stable way to access the app and route traffic to the pods. 
 
 To deploy the application in Kubernetes run the following command: kubectl apply -f k8s/
 The command above will create all the neccessary resources defined in the "k8s" folder.
