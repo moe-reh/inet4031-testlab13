@@ -51,7 +51,7 @@ This lab moved the application to run on Kubernetes instead of Docker Compose. T
 2. Deployments: Manages the Pods, handles updates and replacements of Pods in the event of crashes or deletions in order to keep the application online.
 3. Services: Connects users & apps to the pods. Stable way to access the app and route traffic to the pods. 
 
-To deploy the application in Kubernetes run the following command: kubectl apply -f k8s/
+To deploy the application in Kubernetes run the following command: kubectl apply -f k8s/ <br>
 The command above will create all the neccessary resources defined in the "k8s" folder.
 
 Access the dashboard using: http://"your server IP":30080
