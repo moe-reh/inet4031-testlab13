@@ -12,36 +12,50 @@ The application code and scaffolding are provided. Your job is to complete the D
 
 ---
 
-*The sections below are for you to fill out. Replace each placeholder with your own content before submitting. Having a detailed README is the best practice for showing your work in future GitHub repositories.*
-
----
-
 # Project Overview
+This application creates a IT help desk ticketing system using a container. The project will utilize and showcawses how Apache, Flash, and MariaDB work together in a "stack".
 
-<!-- Briefly describe what this application does in your own words.
-     What problem does it solve? What does a user interact with? -->
+The goal of this project is to use Docker to automatate the creation of a web server. Instead of manually installing databases and web servers on your computer, we package each part into a "container." This allows a user to interact with a web interface that pulls data from a database through a backend API (Flask), all while ensuring the environment is identical for everyone.
 
 # Prerequisites
+Before running this lab, ensure your Virtual Machine (VM) or local environment has the following installed:
 
-<!-- List what needs to be installed or configured on the VM before this lab
-     will work. Include Docker, Docker Compose, and anything else required. -->
+1. Docker: The engine that runs the containers.
+2. Docker Compose: A tool used to define and run multi-container applications using a single YAML file.
+3. Git: To clone the repository.
+4. Sudo Privileges: Most Docker commands require administrative permissions on Linux.
 
 # Getting Started
-
-<!-- Explain how a new teammate would bring this stack up from a fresh clone.
-     Walk through every command they need to run, in order. -->
+1. Clone the Repository: git clone https://github.com/moe-reh/inet4031-testlab12.git
+2. Create your Environment File: cp .env.example .env
+3. Build and Start the Containers: sudo docker-compose up --build -d
+4. Verify the Containers are Running: sudo docker ps
 
 # Configuration
 
-<!-- Explain the .env file: what it is, what variables it contains,
-     and what a teammate needs to provide that is not in this repository. -->
+We use a .env file to manage sensitive information and configuration settings. It contains variables like:
+MYSQL_ROOT_PASSWORD: The master password for the database.
+MYSQL_DATABASE: The name of the specific database being created.
+DB_HOST: The name of the database service so Flask knows where to look.
+The env file is not provided a teammate would need to create their own .env file based on the provided .env.example to ensure their local database has the correct credentials.
 
 # Verification
+To confirm that the entire stack is wired correctly and communicating, follow these steps:
 
-<!-- Describe how to confirm the stack is running correctly.
-     Reference the check script and what a passing run looks like. -->
+Web Access: Open your browser and go to http://localhost:8080 (or your VM's IP). You should see the Apache landing page.
+Run the Check Script: We have included a verification script to automate the testing of the connections between Apache, Flask, and MariaDB.
+
+# lab13 - Kubernetes
+This lab moved the application to run on Kubernetes instead of Docker Compose. The app is now maaged using kubernetes resources:
+1. Deployments
+2. Services
+3. Pods
+
+To deploy the application in Kubernetes run the following command: kubectl apply -f k8s/
+The command above will create all the neccessary resources defined in the "k8s" folder.
+
+Access the dashboard using: http://<VM-IP>:30080
 
 # Feedback (Optional)
+I really enjoyed this lab, and if I'm being honest I learned the most conceptually when completing the research questions, then the technical parts made that knowledge practical. I believe asing a couple of questions for us to research to then letting us complete technical work related to the question is a great combo for fortifying the learnings of the lab. I liked learning about pod, services, and deployements, their functionalities/limits, and being guided through how they actually work together to create an enviroment for an application. 
 
-<!-- Do you have any feedback you would like to give us after completing this lab? What are some things you enjoyed? What about others that you felt was lackluster? Or maybe there was something that we missed that you'd love for us to touch on! This will help us improve the INET 4031 lab experience. We appreciate everything we can get!  -->
-# inet4031-testlab13
